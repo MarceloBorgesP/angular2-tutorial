@@ -9,7 +9,16 @@ import { Component } from '@angular/core';
                 <label>Type a color</label><input type="text" #demoInput><br><br>
                 <input type="text" [(ngModel)]="fname"><br>
                 <input type="text" [(ngModel)]="lname"><br>
-                FullName: {{fname}} {{lname}}`,
+                FullName: {{fname}} {{lname}}
+                <p *ngIf="showElement">Show Element</p>
+                <div [ngSwitch]="color">
+                    <p *ngSwitchWhen="'red'">Red color is shown</p>
+                    <p *ngSwitchWhen="'blue'">Blue color is shown</p>
+                    <p *ngSwitchDefault>Invalid color</p>
+                </div>
+                <ul>
+                    <li *ngFor="let color of colors">{{color}}</li>
+                </ul>`,
 
     styles: [
         `.myClass {
@@ -27,6 +36,9 @@ export class TutorialsComponent {
     private textColor = '#000';
     public fname;
     public lname;
+    public showElement = true;
+    public color = "red";
+    public colors = ['red', 'blue', 'green'];
 
     public onClick(color) {
         this.textColor = color;

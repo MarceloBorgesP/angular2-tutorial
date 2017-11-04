@@ -16,6 +16,9 @@ var TutorialsComponent = (function () {
         this.applyClass = true;
         this.applyBlue = true;
         this.textColor = '#000';
+        this.showElement = true;
+        this.color = "red";
+        this.colors = ['red', 'blue', 'green'];
     }
     TutorialsComponent.prototype.onClick = function (color) {
         this.textColor = color;
@@ -23,7 +26,7 @@ var TutorialsComponent = (function () {
     TutorialsComponent = __decorate([
         core_1.Component({
             selector: 'my-tutorials',
-            template: "<h2>{{title}}</h2>\n                <div [class.myClass]=\"applyClass\">Apply Class</div>\n                <div [style.color] = \"textColor\">this text is: {{textColor}}</div>\n                <button (click)=\"onClick(demoInput.value)\">Click me to update the color</button><br>\n                <label>Type a color</label><input type=\"text\" #demoInput><br><br>\n                <input type=\"text\" [(ngModel)]=\"fname\"><br>\n                <input type=\"text\" [(ngModel)]=\"lname\"><br>\n                FullName: {{fname}} {{lname}}",
+            template: "<h2>{{title}}</h2>\n                <div [class.myClass]=\"applyClass\">Apply Class</div>\n                <div [style.color] = \"textColor\">this text is: {{textColor}}</div>\n                <button (click)=\"onClick(demoInput.value)\">Click me to update the color</button><br>\n                <label>Type a color</label><input type=\"text\" #demoInput><br><br>\n                <input type=\"text\" [(ngModel)]=\"fname\"><br>\n                <input type=\"text\" [(ngModel)]=\"lname\"><br>\n                FullName: {{fname}} {{lname}}\n                <p *ngIf=\"showElement\">Show Element</p>\n                <div [ngSwitch]=\"color\">\n                    <p *ngSwitchWhen=\"'red'\">Red color is shown</p>\n                    <p *ngSwitchWhen=\"'blue'\">Blue color is shown</p>\n                    <p *ngSwitchDefault>Invalid color</p>\n                </div>\n                <ul>\n                    <li *ngFor=\"let color of colors\">{{color}}</li>\n                </ul>",
             styles: [
                 ".myClass {\n            color: red\n        }"
             ]
